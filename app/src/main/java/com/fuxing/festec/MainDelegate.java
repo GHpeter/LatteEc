@@ -10,7 +10,10 @@ import com.fuxing.latter_core.net.RestClient;
 import com.fuxing.latter_core.net.callback.IError;
 import com.fuxing.latter_core.net.callback.IFailure;
 import com.fuxing.latter_core.net.callback.ISuccess;
+import com.fuxing.latter_core.net.rx.RxRestClient;
 import com.fuxing.latter_core.ui.LoaderStyle;
+
+import java.util.Observable;
 
 /**
  * @author ：Create by lichunfu
@@ -30,6 +33,8 @@ public class MainDelegate extends LatteDalegate {
     }
 
     private void testRestClient() {
+
+
         RestClient.builder()
                 .url("http://news.baidu.com/")
                 .loader(getContext(), LoaderStyle.BallBeatIndicator)
@@ -54,4 +59,6 @@ public class MainDelegate extends LatteDalegate {
                 .build()
                 .get();
     }
+
+
 }
