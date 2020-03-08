@@ -1,0 +1,2 @@
+include ':app', ':latter-annotations', ':latter-compiler', ':latter-core', ':latter-ec', ':lattere-ec'
+rootProject.name='FestEC'
