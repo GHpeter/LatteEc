@@ -5,9 +5,12 @@ package com.fuxing.latter_core.app;
  * @Date : 2020-03-02
  * Description:
  **/
-public enum ConfigType {
+public enum ConfigKeys {
     API_HOST,
     APPLCIATION_CONTEXT,
     CONFIG_READY,
-    ICON
+    ICON,
+    LOADER_DELAYED,
+    INTERCEPTOR
+
 }

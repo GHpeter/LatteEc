@@ -16,16 +16,20 @@ public final class Latte {
      * @return
      */
     public static Configurator init(Context context) {
-        getConfiguration().put(ConfigType.APPLCIATION_CONTEXT.name(),context.getApplicationContext());
+        getConfiguration().put(ConfigKeys.APPLCIATION_CONTEXT.name(),context.getApplicationContext());
         return  Configurator.getInstance();
 
     }
 
-    public static WeakHashMap<String, Object> getConfiguration() {
+    public static WeakHashMap<Object, Object> getConfiguration() {
         return Configurator.getInstance().getLatteConfigs();
     }
 
+    public static <T> T getConfiguration(Object key) {
+        return Configurator.getInstance().getConfiguration(key);
+    }
+
     public  static  Context getApplication(){
-        return (Context) getConfiguration().get(ConfigType.APPLCIATION_CONTEXT.name());
+        return (Context) getConfiguration().get(ConfigKeys.APPLCIATION_CONTEXT.name());
     }
 }
