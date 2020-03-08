@@ -4,8 +4,12 @@ import android.content.Intent;
 import android.media.MediaScannerConnection;
 import android.os.Build;
 import android.os.Environment;
+import android.util.Log;
 import android.webkit.MimeTypeMap;
 
+import androidx.annotation.RawRes;
+
+import com.fuxing.latter_core.R;
 import com.fuxing.latter_core.app.Latte;
 
 import java.io.BufferedInputStream;
@@ -13,10 +17,14 @@ import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import okhttp3.Response;
 
 /**
  * @author ：Create by lichunfu
@@ -116,8 +124,48 @@ public class FileUtil {
 
     }
 
+    public static File createFileByTime(String sdcardDirName, String timeFormatHeader, String extension) {
+        String fileName = getFileNameByTime(timeFormatHeader, extension);
+        return createFile(sdcardDirName, fileName);
+
+
+    }
+
     /**
-     *
+     * @param timeFormatHeader：格式化的头（除去时间部分）
+     * @param extension:后缀名
+     * @return 返回时间格式化后的文件名
+     */
+
+    public static String getFileNameByTime(String timeFormatHeader, String extension) {
+        return getTimeFormatName(timeFormatHeader + "." + extension);
+
+    }
+
+    @SuppressWarnings("ResultofMethodCallignored")
+    public static File createFile(String sdcardName, String fileName) {
+        return new File(createDir(sdcardName), fileName);
+    }
+
+    public static String getTimeFormatName(String timeFormatHeader) {
+        Date date = new Date(System.currentTimeMillis());
+        SimpleDateFormat format = new SimpleDateFormat("'" + timeFormatHeader + "'" + TIME_FORMAT);
+        return format.format(date);
+    }
+
+    @SuppressWarnings("ResultofMethodCallignored")
+    public static File createDir(String sdcardDirName) {
+        //拼接sd卡完整的dir
+        String dir = SDCARD_DIR + "/" + sdcardDirName + "/";
+        File fileDir = new File(dir);
+        if (!fileDir.exists()) {
+            fileDir.mkdirs();
+        }
+        return fileDir;
+
+    }
+
+    /**
      * @param is
      * @param dir
      * @param name 完整的文件名
@@ -167,74 +215,32 @@ public class FileUtil {
 
     }
 
-    public static File createFileByTime(String sdcardDirName, String timeFormatHeader, String extension) {
-        String fileName = getFileNameByTime(timeFormatHeader, extension);
-        return createFile(sdcardDirName, fileName);
-
-
-    }
-
-    /**
-     * @param timeFormatHeader：格式化的头（除去时间部分）
-     * @param extension:后缀名
-     * @return 返回时间格式化后的文件名
-     */
-
-    public static String getFileNameByTime(String timeFormatHeader, String extension) {
-        return getTimeFormatName(timeFormatHeader + "." + extension);
-
-    }
-
-    @SuppressWarnings("ResultofMethodCallignored")
-    public static File createFile(String sdcardName, String fileName) {
-        return new File(createDir(sdcardName), fileName);
-    }
-
-    public static String getTimeFormatName(String timeFormatHeader) {
-        Date date = new Date(System.currentTimeMillis());
-        SimpleDateFormat format = new SimpleDateFormat("'" + timeFormatHeader + "'" + TIME_FORMAT);
-        return format.format(date);
-    }
-
-    @SuppressWarnings("ResultofMethodCallignored")
-    public static File createDir(String sdcardDirName) {
-        //拼接sd卡完整的dir
-        String dir = SDCARD_DIR + "/" + sdcardDirName + "/";
-        File fileDir = new File(dir);
-        if (!fileDir.exists()) {
-            fileDir.mkdirs();
-        }
-        return fileDir;
-
-    }
-
-    public  static  String getRawFile(int id){
-        InputStream stream=Latte.getApplication().getResources().openRawResource(id);
-        BufferedInputStream bis=new BufferedInputStream(stream);
-        InputStreamReader reader=new InputStreamReader(bis);
-        BufferedReader bReader=new BufferedReader(reader);
-        StringBuilder stringBuilder=new StringBuilder();
+    public static String getRawFile(int id) {
+        InputStream stream = Latte.getApplication().getResources().openRawResource(id);
+        BufferedInputStream bis = new BufferedInputStream(stream);
+        InputStreamReader reader = new InputStreamReader(bis);
+        BufferedReader bReader = new BufferedReader(reader);
+        StringBuilder stringBuilder = new StringBuilder();
         String str;
         try {
-            while ((str=bReader.readLine())!=null){
+            while ((str = bReader.readLine()) != null) {
                 stringBuilder.append(str);
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             try {
                 bReader.close();
                 reader.close();
                 bis.close();
                 stream.close();
 
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return  stringBuilder.toString();
+        return stringBuilder.toString();
     }
 
 
