@@ -7,6 +7,7 @@ import com.fuxing.latter_core.net.callback.IFailure;
 import com.fuxing.latter_core.net.callback.IRequest;
 import com.fuxing.latter_core.net.callback.ISuccess;
 import com.fuxing.latter_core.net.callback.RequestCallBacks;
+import com.fuxing.latter_core.net.download.DownLoadHandler;
 import com.fuxing.latter_core.ui.LatteLoader;
 import com.fuxing.latter_core.ui.LoaderStyle;
 
@@ -18,7 +19,6 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.http.Body;
 
 /**
  * @author ：Create by lichunfu
@@ -32,11 +32,18 @@ public class RestClient {
     private final String URL;
     private final IRequest REQUEST;
 
+    //download
+    private  String DOWNLOAD_DIR;
+    private  String EXTENSION;
+    private  String NAME;
+
+
     private final ISuccess SUCCESS;
     private final IFailure FAILURE;
     private final IError ERROR;
     private final RequestBody BODY;
     private final File FILE;
+
     private LoaderStyle LOADER_STYLE;
     private Context CONTEXT;
 
@@ -156,5 +163,12 @@ public class RestClient {
 
     public final void delete() {
         request(HttpMethod.DELETE);
+    }
+
+
+    public final void download() {
+        new DownLoadHandler(URL, REQUEST, DOWNLOAD_DIR, EXTENSION, NAME, SUCCESS, FAILURE, ERROR).handlerDownload();
+
+
     }
 }
