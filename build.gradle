@@ -31,7 +31,8 @@ allprojects {
         google()
 
         jcenter()
-
+        //BaseRecyclerViewAdapterHelper
+        maven { url "https://jitpack.io" }
     }
 }
 

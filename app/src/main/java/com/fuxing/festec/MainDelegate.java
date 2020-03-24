@@ -10,10 +10,7 @@ import com.fuxing.latter_core.net.RestClient;
 import com.fuxing.latter_core.net.callback.IError;
 import com.fuxing.latter_core.net.callback.IFailure;
 import com.fuxing.latter_core.net.callback.ISuccess;
-import com.fuxing.latter_core.net.rx.RxRestClient;
-import com.fuxing.latter_core.ui.LoaderStyle;
-
-import java.util.Observable;
+import com.fuxing.latter_core.ui.loader.LoaderStyle;
 
 /**
  * @author ：Create by lichunfu

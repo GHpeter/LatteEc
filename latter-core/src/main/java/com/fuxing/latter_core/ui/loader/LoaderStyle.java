@@ -1,4 +1,4 @@
-package com.fuxing.latter_core.ui;
+package com.fuxing.latter_core.ui.loader;
 
 /**
  * @author ：Create by lichunfu

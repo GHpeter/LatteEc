@@ -1,4 +1,4 @@
-package com.fuxing.latter_core.ui;
+package com.fuxing.latter_core.ui.loader;
 
 import android.content.Context;
 

@@ -2,8 +2,8 @@ package com.fuxing.latter_core.net.callback;
 
 import android.os.Handler;
 
-import com.fuxing.latter_core.ui.LatteLoader;
-import com.fuxing.latter_core.ui.LoaderStyle;
+import com.fuxing.latter_core.ui.loader.LatteLoader;
+import com.fuxing.latter_core.ui.loader.LoaderStyle;
 
 
 import retrofit2.Call;

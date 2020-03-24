@@ -1,4 +1,4 @@
-package com.fuxing.latter_core.ui;
+package com.fuxing.latter_core.ui.loader;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -8,7 +8,7 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatDialog;
 
 import com.fuxing.latter_core.R;
-import com.fuxing.latter_core.util.DimenUtil;
+import com.fuxing.latter_core.util.dimen.DimenUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
@@ -31,11 +31,10 @@ public class LatteLoader {
     public  static  void  showLoading(Context context,Enum<LoaderStyle> styleEnum){
         showLoading(context,styleEnum.name());
     }
+    public  static  void  showLoading(Context context){
+        showLoading(context,DEFALUT_LOADER);
+    }
 
-
-//    public static void showLoading(Context context) {
-//        showLoading(context, DEFALUT_LOADER);
-//    }
 
 
     public static void showLoading(Context context, String type) {
@@ -52,7 +51,7 @@ public class LatteLoader {
             WindowManager.LayoutParams params = dialogWindow.getAttributes();
             params.width = deviceWidth / LOADER_SICE_SCALE;
             params.height = deviceHeight / LOADER_SICE_SCALE;
-//            params.height = params.height + deviceHeight / LOADER_OFFSET_SIZE;
+            params.height = params.height + deviceHeight / LOADER_OFFSET_SIZE;
             params.gravity = Gravity.CENTER;
         }
         LOADERS.add(dialog);

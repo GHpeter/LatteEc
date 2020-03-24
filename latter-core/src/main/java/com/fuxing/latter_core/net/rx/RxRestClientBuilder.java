@@ -2,13 +2,8 @@ package com.fuxing.latter_core.net.rx;
 
 import android.content.Context;
 
-import com.fuxing.latter_core.net.RestClient;
 import com.fuxing.latter_core.net.RestCreator;
-import com.fuxing.latter_core.net.callback.IError;
-import com.fuxing.latter_core.net.callback.IFailure;
-import com.fuxing.latter_core.net.callback.IRequest;
-import com.fuxing.latter_core.net.callback.ISuccess;
-import com.fuxing.latter_core.ui.LoaderStyle;
+import com.fuxing.latter_core.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;

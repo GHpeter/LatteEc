@@ -1,6 +1,7 @@
 package com.fuxing.latter_core.app;
 
 import android.content.Context;
+import android.os.Handler;
 
 import java.util.WeakHashMap;
 
@@ -16,8 +17,8 @@ public final class Latte {
      * @return
      */
     public static Configurator init(Context context) {
-        getConfiguration().put(ConfigKeys.APPLCIATION_CONTEXT.name(),context.getApplicationContext());
-        return  Configurator.getInstance();
+        getConfiguration().put(ConfigKeys.APPLCIATION_CONTEXT, context.getApplicationContext());
+        return Configurator.getInstance();
 
     }
 
@@ -25,11 +26,15 @@ public final class Latte {
         return Configurator.getInstance().getLatteConfigs();
     }
 
-    public static <T> T getConfiguration(Object key) {
-        return Configurator.getInstance().getConfiguration(key);
+    public static Context getApplicationContext() {
+        return (Context) getConfiguration().get(ConfigKeys.APPLCIATION_CONTEXT);
     }
 
-    public  static  Context getApplication(){
-        return (Context) getConfiguration().get(ConfigKeys.APPLCIATION_CONTEXT.name());
+    public static Handler getHandler() {
+        return getConfiguration(ConfigKeys.HANDLER);
+    }
+
+    public static <T> T getConfiguration(Object key) {
+        return Configurator.getInstance().getConfiguration(key);
     }
 }

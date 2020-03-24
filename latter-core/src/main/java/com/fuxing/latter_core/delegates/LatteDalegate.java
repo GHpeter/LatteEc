@@ -5,5 +5,10 @@ package com.fuxing.latter_core.delegates;
  * @Date : 2020-03-02
  * Description:
  **/
-public    class LatteDalegate  extends  PermissionCheckDalegate{
+public    abstract class LatteDalegate  extends  PermissionCheckerDelegate{
+    public  <T extends  LatteDalegate> T getParentDalegate(){
+        return (T) getParentFragment();
+    }
+
+
 }

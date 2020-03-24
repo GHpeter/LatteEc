@@ -8,9 +8,12 @@ public class MainActivity extends ProxyActivity {
 
     @Override
     public LatteDalegate setRootDelegate() {
+
         return new MainDelegate();
 
+
     }
+
 
 
 }

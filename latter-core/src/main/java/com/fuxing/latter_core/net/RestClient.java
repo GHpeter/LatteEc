@@ -8,8 +8,8 @@ import com.fuxing.latter_core.net.callback.IRequest;
 import com.fuxing.latter_core.net.callback.ISuccess;
 import com.fuxing.latter_core.net.callback.RequestCallBacks;
 import com.fuxing.latter_core.net.download.DownLoadHandler;
-import com.fuxing.latter_core.ui.LatteLoader;
-import com.fuxing.latter_core.ui.LoaderStyle;
+import com.fuxing.latter_core.ui.loader.LatteLoader;
+import com.fuxing.latter_core.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;

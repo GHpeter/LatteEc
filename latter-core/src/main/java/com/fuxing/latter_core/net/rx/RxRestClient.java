@@ -4,13 +4,8 @@ import android.content.Context;
 
 import com.fuxing.latter_core.net.HttpMethod;
 import com.fuxing.latter_core.net.RestCreator;
-import com.fuxing.latter_core.net.callback.IError;
-import com.fuxing.latter_core.net.callback.IFailure;
-import com.fuxing.latter_core.net.callback.IRequest;
-import com.fuxing.latter_core.net.callback.ISuccess;
-import com.fuxing.latter_core.net.callback.RequestCallBacks;
-import com.fuxing.latter_core.ui.LatteLoader;
-import com.fuxing.latter_core.ui.LoaderStyle;
+import com.fuxing.latter_core.ui.loader.LatteLoader;
+import com.fuxing.latter_core.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;
@@ -20,7 +15,6 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import retrofit2.Callback;
 
 /**
  * @author ：Create by lichunfu
